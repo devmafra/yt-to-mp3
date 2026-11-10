@@ -1,0 +1,12 @@
+# Dependências externas
+yt-dlp.exe
+bin/
+
+# Arquivos temporários do Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Arquivos gerados pelo PyInstaller
+build/
+*.spec

@@ -13,7 +13,6 @@ if errorlevel 1 goto :erro
 if errorlevel 1 goto :erro
 echo.
 echo Criado: dist\ConversorMP3.exe
-echo Copie yt-dlp.exe, ffmpeg.exe e ffprobe.exe para a pasta dist.
 pause
 exit /b 0
 :erro

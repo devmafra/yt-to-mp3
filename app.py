@@ -169,7 +169,7 @@ class ConversorMP3(tk.Tk):
                 "Programa ausente",
                 "Não encontrei: " + ", ".join(faltando) + "\n\n" +
                 "Coloque esses executáveis na mesma pasta do app (ou na subpasta bin), " +
-                "ou adicione-os ao PATH do Windows. Consulte o LEIA-ME.txt."
+                "ou adicione-os ao PATH do Windows. Consulte o README.md."
             )
             return
         assert ytdlp is not None and ffmpeg is not None and ffprobe is not None
