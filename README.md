@@ -4,13 +4,23 @@ Interface gráfica simples para Windows que permite baixar e converter vídeos e
 
 O aplicativo possui um campo para colar o link do vídeo, seleção da pasta de destino e acompanhamento do progresso do download.
 
+## Download
+
+**[Baixar Conversor MP3 para Windows (.exe)](https://github.com/devmafra/yt-to-mp3/releases/latest/download/ConversorMP3.exe)**
+
+Versão atual: v1.0.0.
+
+Não é necessário instalar Python. Para utilizar o aplicativo, baixe também o yt-dlp e o FFmpeg seguindo as instruções abaixo.
+
 ## Como instalar e usar (Windows)
 
 **Não é necessário instalar Python.**
 
 ### 1. Baixe o aplicativo
 
-Baixe o arquivo `ConversorMP3.exe`, disponível na pasta `dist` deste repositório.
+Baixe o [ConversorMP3.exe](https://github.com/devmafra/yt-to-mp3/releases/latest/download/ConversorMP3.exe) da versão mais recente.
+
+Crie uma pasta chamada `ConversorMP3` e coloque o executável dentro dela.
 
 ### 2. Baixe o yt-dlp
 
