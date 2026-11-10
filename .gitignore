@@ -1,12 +1,11 @@
-# Dependências externas
-yt-dlp.exe
+# Binários e dependências
+dist/
 bin/
+yt-dlp.exe
 
-# Arquivos temporários do Python
+# Arquivos temporários
+build/
 __pycache__/
 *.py[cod]
-.venv/
-
-# Arquivos gerados pelo PyInstaller
-build/
 *.spec
+.venv/
