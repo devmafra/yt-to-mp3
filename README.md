@@ -1,48 +1,35 @@
 # Conversor MP3
 
-Interface gráfica simples para Windows que permite baixar e converter vídeos em MP3 utilizando [yt-dlp](https://github.com/yt-dlp/yt-dlp) e [FFmpeg](https://ffmpeg.org/).
+Aplicativo com interface gráfica para Windows que baixa o áudio de vídeos e o converte para MP3 usando [yt-dlp](https://github.com/yt-dlp/yt-dlp) e [FFmpeg](https://ffmpeg.org/).
 
-O aplicativo possui um campo para colar o link do vídeo, seleção da pasta de destino e acompanhamento do progresso do download.
+Cole o link, escolha a pasta de destino e acompanhe o progresso. Não é necessário instalar Python para usar o executável.
 
 ## Download
 
-**[Baixar Conversor MP3 para Windows (.exe)](https://github.com/devmafra/yt-to-mp3/releases/latest/download/ConversorMP3.exe)**
+**[Baixar ConversorMP3.exe (Windows)](https://github.com/devmafra/yt-to-mp3/releases/latest/download/ConversorMP3.exe)**
 
-Versão atual: v1.0.0.
+Versão publicada: **v1.0.0** | [Ver todas as versões](https://github.com/devmafra/yt-to-mp3/releases)
 
-Não é necessário instalar Python. Para utilizar o aplicativo, baixe também o yt-dlp e o FFmpeg seguindo as instruções abaixo.
+> O aplicativo não inclui o yt-dlp nem o FFmpeg. É necessário baixá-los separadamente, conforme os passos abaixo.
 
-## Como instalar e usar (Windows)
-
-**Não é necessário instalar Python.**
+## Instalação no Windows
 
 ### 1. Baixe o aplicativo
 
-Baixe o [ConversorMP3.exe](https://github.com/devmafra/yt-to-mp3/releases/latest/download/ConversorMP3.exe) da versão mais recente.
-
-Crie uma pasta chamada `ConversorMP3` e coloque o executável dentro dela.
+Baixe o `ConversorMP3.exe` pelo link acima e coloque-o em uma pasta chamada `ConversorMP3`.
 
 ### 2. Baixe o yt-dlp
 
-Baixe o executável diretamente do projeto oficial:
-
-[Download yt-dlp.exe](https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe)
-
-Coloque o arquivo `yt-dlp.exe` na mesma pasta do `ConversorMP3.exe`.
+- [Download oficial do yt-dlp.exe](https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe)
+- Coloque `yt-dlp.exe` na mesma pasta de `ConversorMP3.exe`.
 
 ### 3. Baixe o FFmpeg
 
-Utilize a versão LGPL estática para Windows 64 bits:
+- [Download do FFmpeg LGPL estático para Windows 64 bits](https://github.com/FFmpeg-Builds/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-lgpl.zip)
+- Extraia o ZIP e localize a pasta `bin`.
+- Crie uma pasta `bin` dentro de `ConversorMP3` e copie para ela os arquivos `ffmpeg.exe` e `ffprobe.exe` do pacote extraído.
 
-[Download FFmpeg LGPL (Windows 64 bits)](https://github.com/FFmpeg-Builds/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-lgpl.zip)
-
-1. Extraia o arquivo ZIP.
-2. Abra a pasta extraída e localize a subpasta `bin`.
-3. Copie os arquivos `ffmpeg.exe` e `ffprobe.exe`.
-4. Crie uma pasta chamada `bin` ao lado do `ConversorMP3.exe`.
-5. Cole os dois executáveis dentro dela.
-
-A estrutura final deve ficar assim:
+A organização final será:
 
 ```text
 ConversorMP3/
@@ -53,82 +40,59 @@ ConversorMP3/
     └── ffprobe.exe
 ```
 
-**Observação:** essa versão do FFmpeg é estática e normalmente não exige DLLs adicionais. Se utilizar uma versão compartilhada (`shared`), pode ser necessário copiar toda a pasta `bin`.
+**Nota:** o link acima é para a build *estática* LGPL. Se optar por uma build *shared*, mantenha também as DLLs necessárias, normalmente copiando toda a pasta `bin`.
 
-### 4. Execute o aplicativo
+### 4. Converta um vídeo
 
 1. Abra `ConversorMP3.exe`.
-2. Cole o link do vídeo.
-3. Escolha a pasta onde deseja salvar o arquivo.
+2. Cole a URL do vídeo.
+3. Escolha onde salvar o arquivo.
 4. Clique em **Converter para MP3**.
-5. Aguarde a conclusão do download e da conversão.
-
-O arquivo MP3 será salvo na pasta selecionada.
+5. Aguarde o download e a conversão. O MP3 será salvo na pasta escolhida.
 
 ## Executar pelo código-fonte
 
-Para executar sem utilizar o binário compilado:
+Requisitos: [Python 3.10+](https://www.python.org/downloads/) com Tkinter, além do yt-dlp e FFmpeg nas pastas indicadas acima.
 
-1. Instale [Python 3.10 ou superior](https://www.python.org/downloads/).
-2. Baixe o código-fonte deste repositório.
-3. Coloque `yt-dlp.exe` e os arquivos do FFmpeg nas pastas indicadas anteriormente.
-4. Execute `abrir.bat` ou utilize:
+Clone o repositório (ou baixe seu código-fonte) e execute `abrir.bat` ou:
 
 ```powershell
 python app.py
 ```
 
-### Gerar o executável
+### Gerar um executável
 
-Execute:
+No Windows, execute:
 
 ```powershell
 .\gerar-exe.bat
 ```
 
-O executável será gerado em:
+O script instala o PyInstaller e gera `dist/ConversorMP3.exe`. Para usar esse novo executável, mantenha o yt-dlp e o FFmpeg ao lado dele ou na subpasta `bin`, conforme a estrutura de instalação.
 
-```text
-dist/ConversorMP3.exe
-```
+## Dúvidas frequentes
 
-## Observações
+**O aplicativo diz que não encontrou o yt-dlp ou o FFmpeg.** Confira os nomes dos arquivos e as pastas do exemplo acima. Não é necessário colocar os executáveis no `PATH` se estiverem nesses locais.
 
-- O aplicativo converte um vídeo por vez, sem baixar playlists completas.
-- A conversão para MP3 utiliza a melhor qualidade VBR configurada no yt-dlp (`--audio-quality 0`).
-- A qualidade final depende do áudio original.
-- Alguns sites podem exigir atualizações do yt-dlp ou dependências adicionais.
-- Baixe apenas conteúdos que você tenha autorização para baixar.
+**A conversão falhou.** Verifique a mensagem na área **Detalhes**. Alguns sites podem alterar seus formatos ou exigir versões mais recentes do yt-dlp e outras dependências.
 
-## Tecnologias
+**O MP3 terá a mesma qualidade do áudio original?** A opção `--audio-quality 0` solicita alta qualidade VBR na conversão. Converter para MP3 não melhora a qualidade da fonte e pode introduzir perdas.
 
-- Python e Tkinter: interface gráfica.
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp): download de mídia.
-- [FFmpeg](https://ffmpeg.org/): conversão de áudio para MP3.
-- PyInstaller: geração do executável Windows.
+## Limitações
 
-## Desenvolvedor
+- Processa um vídeo por vez; playlists não são baixadas integralmente.
+- Arquivos parciais podem permanecer na pasta de destino após um cancelamento.
+- A disponibilidade de vídeos depende dos sites e do suporte oferecido pelo yt-dlp.
+- Baixe apenas conteúdos para os quais você tenha autorização.
 
-**Davi Mafra**
+## Tecnologias e créditos
 
-Desenvolvedor Full Stack e estudante de Engenharia de Software.
+- **Python e Tkinter:** interface gráfica.
+- **[yt-dlp](https://github.com/yt-dlp/yt-dlp):** download de mídia.
+- **[FFmpeg](https://ffmpeg.org/):** conversão de áudio.
+- **[FFmpeg-Builds](https://github.com/FFmpeg-Builds/FFmpeg-Builds):** disponibilização da build LGPL indicada acima.
+- **PyInstaller:** geração do executável Windows.
 
-Projeto desenvolvido para simplificar o download e a conversão de vídeos em arquivos MP3 no Windows, por meio de uma interface gráfica acessível.
+**Desenvolvido por Davi Mafra**, desenvolvedor Full Stack e estudante de Engenharia de Software.
 
-## Créditos e licenças
-
-O Conversor MP3 foi desenvolvido por **Davi Mafra**, utilizando Python e Tkinter para a interface gráfica.
-
-O aplicativo utiliza as seguintes ferramentas de código aberto:
-
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp): responsável pelo download de mídia.
-- [FFmpeg](https://ffmpeg.org/): responsável pela conversão de áudio.
-- [FFmpeg-Builds](https://github.com/FFmpeg-Builds/FFmpeg-Builds): fornece a build estática LGPL utilizada no projeto.
-
-Essas ferramentas pertencem aos seus respectivos autores e são distribuídas sob suas próprias licenças.
-
-O Conversor MP3 é um projeto independente e não possui vínculo oficial com os desenvolvedores do yt-dlp ou do FFmpeg.
-
----
-
-Desenvolvido por **Davi Mafra**.
+Este é um projeto independente, sem vínculo oficial com yt-dlp, FFmpeg ou seus mantenedores. As dependências são obtidas separadamente e possuem licenças próprias. Este repositório não apresenta, no momento, uma licença de reutilização para o código do aplicativo.
